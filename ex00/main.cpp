@@ -6,7 +6,7 @@
 /*   By: vsanin <vsanin@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:57:53 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/15 19:36:03 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/17 15:34:04 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(void)
 		{
 			easyfind(emptyVector, 42);
 		}
-		catch(const emptyContainer& e)
+		catch(const EmptyContainerException& e)
 		{
 			std::cerr << e.what() << '\n';
 		}
@@ -41,7 +41,7 @@ int main(void)
 		{
 			easyfind(emptyDeque, 42);
 		}
-		catch(const emptyContainer& e)
+		catch(const EmptyContainerException& e)
 		{
 			std::cerr << e.what() << '\n';
 		}
@@ -51,7 +51,7 @@ int main(void)
 		{
 			easyfind(emptyList, 42);
 		}
-		catch(const emptyContainer& e)
+		catch(const EmptyContainerException& e)
 		{
 			std::cerr << e.what() << '\n';
 		}
@@ -73,7 +73,7 @@ int main(void)
 		{
 			std::cout << *easyfind(vector, -1) << std::endl;
 		}
-		catch(const notFound& e)
+		catch(const NotFoundException& e)
 		{
 			std::cerr << e.what() << std::endl;
 		}
@@ -82,7 +82,7 @@ int main(void)
 		{
 			std::cout << *easyfind(vector, 999) << std::endl;
 		}
-		catch(const notFound& e)
+		catch(const NotFoundException& e)
 		{
 			std::cerr << e.what() << std::endl;
 		}
@@ -108,7 +108,7 @@ int main(void)
 		{
 			std::cout << *easyfind(deque, -1) << std::endl;
 		}
-		catch(const notFound& e)
+		catch(const NotFoundException& e)
 		{
 			std::cerr << e.what() << std::endl;
 		}
@@ -117,7 +117,7 @@ int main(void)
 		{
 			std::cout << *easyfind(deque, 999) << std::endl;
 		}
-		catch(const notFound& e)
+		catch(const NotFoundException& e)
 		{
 			std::cerr << e.what() << std::endl;
 		}
@@ -143,7 +143,7 @@ int main(void)
 		{
 			std::cout << *easyfind(list, -1) << std::endl;
 		}
-		catch(const notFound& e)
+		catch(const NotFoundException& e)
 		{
 			std::cerr << e.what() << std::endl;
 		}
@@ -152,7 +152,7 @@ int main(void)
 		{
 			std::cout << *easyfind(list, 999) << std::endl;
 		}
-		catch(const notFound& e)
+		catch(const NotFoundException& e)
 		{
 			std::cerr << e.what() << std::endl;
 		}
