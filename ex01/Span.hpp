@@ -6,7 +6,7 @@
 /*   By: vsanin <vsanin@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:56:42 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/17 22:18:51 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/18 17:33:51 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class ElementLimitException : public std::exception
 {
 	public:
-		const char* what() const throw() { return "Element limit reached"; }
+		const char* what() const throw() { return "Element limit reached when attempting to add number(s)"; }
 };
 
 class SpanUnavailableException : public std::exception

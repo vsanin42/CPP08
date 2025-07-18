@@ -6,7 +6,7 @@
 /*   By: vsanin <vsanin@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:50:20 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/17 22:23:52 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/18 18:46:14 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ Span::Span() : nums(), maxSize(0)
 Span::Span(unsigned int n) : nums(), maxSize(n)
 {
 	std::cout << "Parametrized constructor\n";
-	nums.reserve(n); // keep ?
 }
 
 Span::Span(const Span& ref) : nums(ref.nums), maxSize(ref.maxSize)
@@ -102,17 +101,24 @@ int Span::longestSpan(void)
 void Span::printSpan(void)
 {
 	size_t size = nums.size();
-	if (size < 50)
+	std::cout << "span:";
+	if (!size)
+	{
+		std::cout << " empty" << std::endl;
+		return;
+	}
+	if (size < 10)
 	{
 		for (size_t i = 0; i < size; i++)
-			std::cout << nums[i] << std::endl;
+			std::cout << " " << nums[i];
 	}
 	else
 	{
 		for (size_t i = 0; i < 3; i++)
-			std::cout << nums[i] << std::endl;
-		std::cout << "..." << std::endl;
-		for (size_t i = size - 1; i > size - 4; i--)
-			std::cout << nums[i] << std::endl;
+			std::cout << " " << nums[i];
+		std::cout << " ... ";
+		for (size_t i = size - 3; i < size; i++)
+			std::cout << " " << nums[i];
 	}
+	std::cout << std::endl;
 }
