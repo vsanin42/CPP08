@@ -17,7 +17,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 
 HEADERS = MutantStack.hpp
-SRC = main.cpp # MutantStack.tpp
+SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
