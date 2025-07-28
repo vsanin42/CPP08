@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsanin <vsanin@student.42prague.com>       +#+  +:+       +#+        */
+/*   By: vsanin <vsanin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:57:53 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/18 19:09:13 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/28 17:01:53 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,15 @@ int main(void)
 		std::cout << "longest: " << span.longestSpan() << std::endl;
 	}
 	{
+		std::cout << "\n~~~ addExtra() - single ~~~" << std::endl;
+		Span span(2);
+
+		span.addExtra(24, 24);
+		span.printSpan();
+		span.addExtra(42, 42);
+		span.printSpan();
+	}
+	{
 		std::cout << "\n~~~ addExtra() - 10000 ~~~" << std::endl;
 		Span span(10000);
 		
@@ -177,16 +186,6 @@ int main(void)
 			span.addExtra(INT_MIN, INT_MAX);
 		}
 		catch(const ElementLimitException& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-		span.printSpan();
-
-		try
-		{
-			span.addExtra(INT_MIN, INT_MAX - 1);
-		}
-		catch(const std::exception& e)
 		{
 			std::cerr << e.what() << '\n';
 		}
