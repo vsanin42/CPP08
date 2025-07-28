@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsanin <vsanin@student.42prague.com>       +#+  +:+       +#+        */
+/*   By: vsanin <vsanin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:56:42 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/18 17:33:51 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/28 20:18:51 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ class Span
 		~Span();
 		const std::vector<int>& getNums(void) const;
 		void addNumber(int num);
+		
+		template <typename I>
+		void addNumbers(I begin, I end)
+		{
+			if (std::distance(begin, end) + nums.size() > maxSize) // distance ret val?
+				throw ElementLimitException();
+			nums.insert(nums.end(), begin, end);
+		}
+		
 		void addExtra(int first, int last);
 		int shortestSpan(void);
 		int longestSpan(void);

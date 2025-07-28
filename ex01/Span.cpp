@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsanin <vsanin@student.42prague.com>       +#+  +:+       +#+        */
+/*   By: vsanin <vsanin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:50:20 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/18 18:46:14 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/28 20:45:01 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void Span::addNumber(int num)
 
 void Span::addExtra(int first, int last)
 {
-	long long extraSize = std::llabs(static_cast<long long>(first) - last) + 1;
+	long long extraSize = std::llabs(static_cast<long long>(first) - last) + 1; // force first <= last ?
 	if (extraSize > UINT_MAX || extraSize + nums.size() > maxSize)
 		throw ElementLimitException();
 	size_t safeExtraSize = static_cast<size_t>(extraSize);
@@ -67,7 +67,7 @@ void Span::addExtra(int first, int last)
 		extra[i] = first;
 		first += step;
 	}
-	nums.insert(nums.end(), extra.begin(), extra.end());
+	this->addNumbers(extra.begin(), extra.end());
 }
 
 int Span::shortestSpan(void)

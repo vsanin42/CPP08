@@ -6,7 +6,7 @@
 /*   By: vsanin <vsanin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:57:53 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/28 17:01:53 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/28 20:41:32 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,65 @@ int main(void)
 		{
 			std::cerr << e.what() << '\n';
 		}
+		span.printSpan();
+	}
+	{
+		std::cout << "\n~~~ addNumbers() - default ~~~" << std::endl;
+		Span span(6);
+		
+		span.addNumber(42);
+		span.printSpan();
+
+		int ints[] = { 1, 2, 3, 100, 500 };
+		std::vector<int> vector(ints, ints + 5);
+		span.addNumbers(vector.begin(), vector.end());
+		span.printSpan();
+
+		std::cout << "shortest: " << span.shortestSpan() << std::endl;
+		std::cout << "longest: " << span.longestSpan() << std::endl;
+	}
+	{
+		std::cout << "\n~~~ addNumbers() - limit ~~~" << std::endl;
+		Span span(5);
+		
+		span.addNumber(42);
+		span.printSpan();
+
+		int ints[] = { 1, 2, 3, 100, 500 };
+		std::vector<int> vector(ints, ints + 5);
+		try
+		{
+			span.addNumbers(vector.begin(), vector.end());
+		}
+		catch(const ElementLimitException& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		span.printSpan();
+	}
+	// {
+	// 	std::cout << "\n~~~ addNumbers() - inverted ~~~" << std::endl; // idk
+	// 	Span span(5);
+
+	// 	span.printSpan();
+	// 	int ints[] = { 1, 2, 3, 100, 500 };
+	// 	std::vector<int> vector(ints, ints + 5);
+	// 	span.addNumbers(vector.end(), vector.begin());
+	// 	span.printSpan();
+	// 	std::cout << "shortest: " << span.shortestSpan() << std::endl;
+	// 	std::cout << "longest: " << span.longestSpan() << std::endl;
+	// }
+	{
+		std::cout << "\n~~~ addNumbers() - single ~~~" << std::endl;
+		Span span(2);
+
+		int int24[] = { 24 };
+		int int42[] = { 42 };
+		std::vector<int> vector1(int24, int24 + 1);
+		std::vector<int> vector2(int42, int42 + 1);
+		span.addNumbers(vector1.begin(), vector1.end());
+		span.printSpan();
+		span.addNumbers(vector2.begin(), vector2.end());
 		span.printSpan();
 	}
 	return 0;
