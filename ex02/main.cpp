@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsanin <vsanin@student.42prague.com>       +#+  +:+       +#+        */
+/*   By: vsanin <vsanin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:57:53 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/19 19:41:11 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/28 19:44:47 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ int main(void)
 		std::cout << "\n~~~ empty MutantStack ~~~" << std::endl;
 		MutantStack<int> empty;
 		std::cout << "is MutantStack empty? " << ((empty.begin() == empty.end()) ? "yes" : "no") << std::endl;
+		std::cout << "is MutantStack empty? " << ((empty.rbegin() == empty.rend()) ? "yes" : "no") << std::endl;
 	}
 	{
 		std::cout << "\n~~~ ocf ~~~" << std::endl;
