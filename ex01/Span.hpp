@@ -6,7 +6,7 @@
 /*   By: vsanin <vsanin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:56:42 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/28 20:18:51 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/29 14:16:01 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <cstddef>
 
 class ElementLimitException : public std::exception
 {
@@ -46,7 +47,10 @@ class Span
 		template <typename I>
 		void addNumbers(I begin, I end)
 		{
-			if (std::distance(begin, end) + nums.size() > maxSize) // distance ret val?
+			std::ptrdiff_t dist = std::distance(begin, end);
+			if (dist < 0)
+				throw std::invalid_argument("addNumbers(): negative distance between provided iterators");
+			if (dist + nums.size() > maxSize)
 				throw ElementLimitException();
 			nums.insert(nums.end(), begin, end);
 		}

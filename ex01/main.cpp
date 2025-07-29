@@ -6,7 +6,7 @@
 /*   By: vsanin <vsanin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:57:53 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/28 20:41:32 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/29 14:36:29 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,18 +225,23 @@ int main(void)
 		}
 		span.printSpan();
 	}
-	// {
-	// 	std::cout << "\n~~~ addNumbers() - inverted ~~~" << std::endl; // idk
-	// 	Span span(5);
+	{
+		std::cout << "\n~~~ addNumbers() - inverted ~~~" << std::endl;
+		Span span(5);
 
-	// 	span.printSpan();
-	// 	int ints[] = { 1, 2, 3, 100, 500 };
-	// 	std::vector<int> vector(ints, ints + 5);
-	// 	span.addNumbers(vector.end(), vector.begin());
-	// 	span.printSpan();
-	// 	std::cout << "shortest: " << span.shortestSpan() << std::endl;
-	// 	std::cout << "longest: " << span.longestSpan() << std::endl;
-	// }
+		span.printSpan();
+		int ints[] = { 1, 2, 3, 100, 500 };
+		std::vector<int> vector(ints, ints + 5);
+		try
+		{
+			span.addNumbers(vector.end(), vector.begin());
+		}
+		catch(const std::invalid_argument& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		span.printSpan();
+	}
 	{
 		std::cout << "\n~~~ addNumbers() - single ~~~" << std::endl;
 		Span span(2);
@@ -248,6 +253,18 @@ int main(void)
 		span.addNumbers(vector1.begin(), vector1.end());
 		span.printSpan();
 		span.addNumbers(vector2.begin(), vector2.end());
+		span.printSpan();
+	}
+	{
+		std::cout << "\n~~~ addNumbers() - const ~~~" << std::endl;
+		Span span(5);
+		span.printSpan();
+
+		int ints[] = { 1, 2, 3, 100, 500 };
+		std::vector<int> vector(ints, ints + 5);
+		std::vector<int>::const_iterator b = vector.begin();
+		std::vector<int>::const_iterator e = vector.end();
+		span.addNumbers(b, e);
 		span.printSpan();
 	}
 	return 0;

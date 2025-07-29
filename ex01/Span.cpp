@@ -6,7 +6,7 @@
 /*   By: vsanin <vsanin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:50:20 by vsanin            #+#    #+#             */
-/*   Updated: 2025/07/28 20:47:36 by vsanin           ###   ########.fr       */
+/*   Updated: 2025/07/29 14:26:27 by vsanin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void Span::addNumber(int num)
 
 void Span::addExtra(int first, int last)
 {
-	long long extraSize = std::llabs(static_cast<long long>(first) - last) + 1; // force first <= last ?
+	long long extraSize = std::llabs(static_cast<long long>(first) - last) + 1;
 	if (extraSize > UINT_MAX || extraSize + nums.size() > maxSize)
 		throw ElementLimitException();
 	size_t safeExtraSize = static_cast<size_t>(extraSize);
